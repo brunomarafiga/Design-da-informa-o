@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiBi UFPR - Protótipo Alta Fidelidade</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="sibihifi.css">
+</head>
+
+<body>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu-drawer" id="menuDrawer">
+        <div class="drawer-header">
+            <div class="drawer-title">Menu</div>
+            <button class="drawer-close" onclick="toggleMenu()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <nav class="drawer-nav">
+            <a href="#" class="drawer-item active"><i class="fa-solid fa-house"></i> Início</a>
+
+            <div class="drawer-item expandable" onclick="toggleSubmenu(event, 'sobre')">
+                <div><i class="fa-solid fa-circle-info"></i> Sobre o SiBi</div>
+                <i class="fa-solid fa-chevron-down expand-icon"></i>
+            </div>
+            <div class="drawer-submenu" id="sobre">
+                <a href="#" class="drawer-subitem">Consulta ao Acervo</a>
+                <a href="#" class="drawer-subitem">Nossos Serviços</a>
+                <a href="#" class="drawer-subitem">Notícias</a>
+                <a href="#" class="drawer-subitem">Bolsa SiBi</a>
+                <a href="#" class="drawer-subitem">Perguntas Frequentes</a>
+                <a href="#" class="drawer-subitem">Contato das Bibliotecas</a>
+                <a href="#" class="drawer-subitem">Equipe SiBi</a>
+                <a href="#" class="drawer-subitem">Mapa do Site</a>
+            </div>
+
+            <div class="drawer-item expandable" onclick="toggleSubmenu(event, 'servicos')">
+                <div><i class="fa-solid fa-briefcase"></i> Serviços</div>
+                <i class="fa-solid fa-chevron-down expand-icon"></i>
+            </div>
+            <div class="drawer-submenu" id="servicos">
+                <a href="#" class="drawer-subitem">Certidão Negativa</a>
+                <a href="#" class="drawer-subitem">Renovação/Reserva</a>
+                <a href="#" class="drawer-subitem">Normalização</a>
+                <a href="#" class="drawer-subitem">Atendimento On-line</a>
+                <a href="#" class="drawer-subitem">Cadastro de Usuários</a>
+                <a href="#" class="drawer-subitem">Cursos (ProEduC)</a>
+                <a href="#" class="drawer-subitem">Aplicativo Biblioteca</a>
+            </div>
+
+            <div class="drawer-item expandable" onclick="toggleSubmenu(event, 'bases')">
+                <div><i class="fa-solid fa-database"></i> Bases de Dados</div>
+                <i class="fa-solid fa-chevron-down expand-icon"></i>
+            </div>
+            <div class="drawer-submenu" id="bases">
+                <a href="#" class="drawer-subitem">Bases de Dados</a>
+                <a href="#" class="drawer-subitem">Tutoriais de uso</a>
+                <a href="#" class="drawer-subitem">Repositório Digital UFPR</a>
+            </div>
+
+            <div class="drawer-item expandable" onclick="toggleSubmenu(event, 'bibliotecas')">
+                <div><i class="fa-solid fa-building"></i> Bibliotecas</div>
+                <i class="fa-solid fa-chevron-down expand-icon"></i>
+            </div>
+            <div class="drawer-submenu" id="bibliotecas">
+                <div class="drawer-section-title">Curitiba</div>
+                <a href="#" class="drawer-subitem">Biblioteca Central (BC)</a>
+                <a href="#" class="drawer-subitem">Artes, Comunicação e Design – Batel</a>
+                <a href="#" class="drawer-subitem">Artes, Comunicação e Design – Cabral</a>
+                <a href="#" class="drawer-subitem">Campus Rebouças</a>
+                <a href="#" class="drawer-subitem">Ciência e Tecnologia</a>
+                <a href="#" class="drawer-subitem">Ciências Agrárias</a>
+                <a href="#" class="drawer-subitem">Ciências Biológicas</a>
+                <a href="#" class="drawer-subitem">Ciências da Saúde – Botânico</a>
+                <a href="#" class="drawer-subitem">Ciências da Saúde – Sede</a>
+                <a href="#" class="drawer-subitem">Ciências Florestais e da Madeira</a>
+                <a href="#" class="drawer-subitem">Ciências Humanas</a>
+                <a href="#" class="drawer-subitem">Ciências Jurídicas</a>
+                <a href="#" class="drawer-subitem">Ciências Sociais Aplicadas</a>
+                <a href="#" class="drawer-subitem">Educação Profissional e Tecnológica</a>
+                <div class="drawer-section-title">Interior e Litoral</div>
+                <a href="#" class="drawer-subitem">Campus Jandaia do Sul</a>
+                <a href="#" class="drawer-subitem">Campus Toledo</a>
+                <a href="#" class="drawer-subitem">Centro de Estudos do Mar – Mirassol</a>
+                <a href="#" class="drawer-subitem">Centro de Estudos do Mar – Pontal do Sul</a>
+                <a href="#" class="drawer-subitem">UFPR Palotina</a>
+                <a href="#" class="drawer-subitem">UFPR Litoral</a>
+            </div>
+
+            <a href="#" class="drawer-item"><i class="fa-solid fa-building-columns"></i> Repositório UFPR</a>
+            <a href="#" class="drawer-item"><i class="fa-regular fa-envelope"></i> Contato</a>
+        </nav>
+    </div>
+
+    <div class="app-frame">
+        <header>
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="header-btn hamburger-btn" onclick="toggleMenu()">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="logo-box">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <div class="app-title">SiBi UFPR</div>
+                </div>
+
+                <button class="header-btn" onclick="toggleTheme()" title="Alternar Tema">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i>
+                </button>
+            </div>
+        </header>
+
+        <nav class="nav-scroller">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">Início</a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">Sobre o SiBi <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" class="dropdown-link">Consulta ao Acervo</a></li>
+                        <li><a href="#" class="dropdown-link">Nossos Serviços</a></li>
+                        <li><a href="#" class="dropdown-link">Notícias</a></li>
+                        <li><a href="#" class="dropdown-link">Bolsa SiBi</a></li>
+                        <li><a href="#" class="dropdown-link">Perguntas Frequentes</a></li>
+                        <li><a href="#" class="dropdown-link">Contato das Bibliotecas</a></li>
+                        <li><a href="#" class="dropdown-link">Equipe SiBi</a></li>
+                        <li><a href="#" class="dropdown-link">Mapa do Site</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">Serviços <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" class="dropdown-link">Certidão Negativa</a></li>
+                        <li><a href="#" class="dropdown-link">Renovação/Reserva</a></li>
+                        <li><a href="#" class="dropdown-link">Normalização</a></li>
+                        <li><a href="#" class="dropdown-link">Atendimento On-line</a></li>
+                        <li><a href="#" class="dropdown-link">Cadastro de Usuários</a></li>
+                        <li><a href="#" class="dropdown-link">Cursos (ProEduC)</a></li>
+                        <li><a href="#" class="dropdown-link">Aplicativo Biblioteca</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">Bases de Dados <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" class="dropdown-link">Bases de Dados</a></li>
+                        <li><a href="#" class="dropdown-link">Tutoriais de uso</a></li>
+                        <li><a href="#" class="dropdown-link">Repositório Digital UFPR</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">Bibliotecas <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu mega-menu">
+                        <div class="mega-menu-section">
+                            <h4>Curitiba</h4>
+                            <li><a href="#" class="dropdown-link">Biblioteca Central (BC)</a></li>
+                            <li><a href="#" class="dropdown-link">Artes, Comunicação e Design – Batel</a></li>
+                            <li><a href="#" class="dropdown-link">Artes, Comunicação e Design – Cabral</a></li>
+                            <li><a href="#" class="dropdown-link">Campus Rebouças</a></li>
+                            <li><a href="#" class="dropdown-link">Ciência e Tecnologia</a></li>
+                            <li><a href="#" class="dropdown-link">Ciências Agrárias</a></li>
+                            <li><a href="#" class="dropdown-link">Ciências Biológicas</a></li>
+                            <li><a href="#" class="dropdown-link">Ciências da Saúde – Botânico</a></li>
+                            <li><a href="#" class="dropdown-link">Ciências da Saúde – Sede</a></li>
+                            <li><a href="#" class="dropdown-link">Ciências Florestais e da Madeira</a></li>
+                            <li><a href="#" class="dropdown-link">Ciências Humanas</a></li>
+                            <li><a href="#" class="dropdown-link">Ciências Jurídicas</a></li>
+                            <li><a href="#" class="dropdown-link">Ciências Sociais Aplicadas</a></li>
+                            <li><a href="#" class="dropdown-link">Educação Profissional e Tecnológica</a></li>
+                        </div>
+                        <div class="mega-menu-section">
+                            <h4>Interior e Litoral</h4>
+                            <li><a href="#" class="dropdown-link">Campus Jandaia do Sul</a></li>
+                            <li><a href="#" class="dropdown-link">Campus Toledo</a></li>
+                            <li><a href="#" class="dropdown-link">Centro de Estudos do Mar – Mirassol</a></li>
+                            <li><a href="#" class="dropdown-link">Centro de Estudos do Mar – Pontal do Sul</a></li>
+                            <li><a href="#" class="dropdown-link">UFPR Palotina</a></li>
+                            <li><a href="#" class="dropdown-link">UFPR Litoral</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Repositório UFPR</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Contato</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="content-wrapper">
+
+            <div class="breadcrumb">Home › <span>Página Inicial</span></div>
+
+            <div class="hero-card">
+                <i class="fa-regular fa-images hero-icon"></i>
+                <div class="hero-dots">
+                    <div class="dot"></div>
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-header">Atalhos Rápidos</div>
+                <div class="shortcuts-grid">
+                    <div class="shortcut-item">
+                        <div class="icon-wrapper"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        <span class="shortcut-label">Consulta Acervo</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <div class="icon-wrapper"><i class="fa-solid fa-arrows-rotate"></i></div>
+                        <span class="shortcut-label">Renovação</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <div class="icon-wrapper"><i class="fa-solid fa-file-signature"></i></div>
+                        <span class="shortcut-label">Normas</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <div class="icon-wrapper"><i class="fa-solid fa-database"></i></div>
+                        <span class="shortcut-label">Bases</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <div class="icon-wrapper"><i class="fa-solid fa-laptop-file"></i></div>
+                        <span class="shortcut-label">Tutoriais</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <div class="icon-wrapper"><i class="fa-solid fa-building-columns"></i></div>
+                        <span class="shortcut-label">Repositório</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <div class="icon-wrapper"><i class="fa-solid fa-circle-play"></i></div>
+                        <span class="shortcut-label">Capacitação</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <div class="icon-wrapper"><i class="fa-solid fa-headset"></i></div>
+                        <span class="shortcut-label">Atendimento</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-header">
+                    Últimas Notícias
+                    <span class="see-all-link">Ver todas →</span>
+                </div>
+                <div class="news-container">
+                    <div class="news-card">
+                        <span class="tag tag-blue">#Evento</span>
+                        <div class="news-title">🧠 Exposição 'Livros de Terra' está em cartaz na Biblioteca de C&T</div>
+                        <div class="news-date"><i class="fa-regular fa-calendar"></i> 13 de novembro de 2025</div>
+                    </div>
+                    <div class="news-card">
+                        <span class="tag tag-blue">#Cultura</span>
+                        <div class="news-title">Clube do Livro SiBi/UFPR convida para a leitura de 'O Avesso da Pele'
+                        </div>
+                        <div class="news-date"><i class="fa-regular fa-calendar"></i> 12 de novembro de 2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-banner">
+                <div class="app-banner-content">
+                    <div class="section-header banner-title">App Biblioteca</div>
+                    <p class="banner-description">Tenha o SiBi na palma da sua mão. Consulte o acervo, renove livros e
+                        muito mais.</p>
+                    <button class="btn-primary"><i class="fa-brands fa-android"></i> Baixar App</button>
+                </div>
+                <div class="video-mockup">
+                    <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                </div>
+            </div>
+
+            <div class="circle-menu">
+                <div class="c-menu-item">
+                    <div class="c-icon"><i class="fa-solid fa-book"></i></div>
+                    <span class="c-label">Acervo</span>
+                </div>
+                <div class="c-menu-item">
+                    <div class="c-icon"><i class="fa-solid fa-share-from-square"></i></div>
+                    <span class="c-label">Empréstimo</span>
+                </div>
+                <div class="c-menu-item">
+                    <div class="c-icon"><i class="fa-solid fa-rotate"></i></div>
+                    <span class="c-label">Renovação</span>
+                </div>
+                <div class="c-menu-item">
+                    <div class="c-icon"><i class="fa-regular fa-calendar-check"></i></div>
+                    <span class="c-label">Reserva</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-header">Recursos de Pesquisa</div>
+                <div class="complex-grid">
+                    <div class="info-card">
+                        <div class="resource-layout">
+                            <div class="res-icon-box"><i class="fa-solid fa-microscope"></i></div>
+                            <div class="res-links">
+                                <div class="res-link">Bases de Dados</div>
+                                <div class="res-link">Portais de Pesquisa</div>
+                                <div class="res-link">Guias Rápidos</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-card">
+                        <span class="highlight-tag"><i class="fa-solid fa-bullhorn"></i> Destaque</span>
+                        <h3 class="highlight-title">Temos vagas!</h3>
+                        <p class="highlight-text">O Sistema de Bibliotecas está com processo seletivo aberto para
+                            estágio.</p>
+                        <button class="highlight-btn">Saiba mais</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <div class="footer-logo">
+                <i class="fa-solid fa-book-open-reader"></i>
+            </div>
+            <h3>Sistema de Bibliotecas</h3>
+            <p class="footer-subtitle">Universidade Federal do Paraná</p>
+
+            <div class="footer-nav">
+                <div class="f-icon"><i class="fa-brands fa-instagram"></i></div>
+                <div class="f-icon"><i class="fa-brands fa-facebook"></i></div>
+                <div class="f-icon"><i class="fa-solid fa-globe"></i></div>
+            </div>
+
+            <p class="footer-copyright">© 2025 SiBi/UFPR. Todos os direitos reservados.</p>
+        </footer>
+
+    </div>
+
+    <script src="sibihifi.js"></script>
+
+</body>
+
+</html>
