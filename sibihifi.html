@@ -22,12 +22,12 @@
     <div class="mobile-menu-drawer" id="menuDrawer">
         <div class="drawer-header">
             <div class="drawer-title">Menu</div>
-            <button class="drawer-close" onclick="toggleMenu()">
+                <button class="drawer-close" onclick="toggleMenu()" aria-label="Fechar menu">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
         <nav class="drawer-nav">
-            <a href="#" class="drawer-item active"><i class="fa-solid fa-house"></i> Início</a>
+              <a href="sibihifi.html" class="drawer-item active" aria-label="Início"><i class="fa-solid fa-house"></i> Início</a>
 
             <div class="drawer-item expandable" onclick="toggleSubmenu(event, 'sobre')">
                 <div><i class="fa-solid fa-circle-info"></i> Sobre o SiBi</div>
@@ -36,7 +36,7 @@
             <div class="drawer-submenu" id="sobre">
                 <a href="#" class="drawer-subitem">Consulta ao Acervo</a>
                 <a href="#" class="drawer-subitem">Nossos Serviços</a>
-                <a href="Noticias/noticias.html" class="drawer-subitem">Notícias</a>
+                <a href="Noticias/noticias.html" class="drawer-subitem open-new-tab">Notícias</a>
                 <a href="#" class="drawer-subitem">Bolsa SiBi</a>
                 <a href="#" class="drawer-subitem">Perguntas Frequentes</a>
                 <a href="#" class="drawer-subitem">Contato das Bibliotecas</a>
@@ -131,7 +131,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="#" class="dropdown-link">Consulta ao Acervo</a></li>
                         <li><a href="#" class="dropdown-link">Nossos Serviços</a></li>
-                        <li><a href="Noticias/noticias.html" class="dropdown-link">Notícias</a></li>
+                        <li><a href="Noticias/noticias.html" class="dropdown-link open-new-tab">Notícias</a></li>
                         <li><a href="#" class="dropdown-link">Bolsa SiBi</a></li>
                         <li><a href="#" class="dropdown-link">Perguntas Frequentes</a></li>
                         <li><a href="#" class="dropdown-link">Contato das Bibliotecas</a></li>
@@ -253,7 +253,7 @@
             <div>
                 <div class="section-header">
                     Últimas Notícias
-                    <a href="Noticias/noticias.html" class="see-all-link">Ver todas →</a>
+                    <a href="Noticias/noticias.html" class="see-all-link open-new-tab">Ver todas →</a>
                 </div>
                 <div class="news-container">
                     <div class="news-card">
@@ -292,7 +292,7 @@
                     <span class="c-label">Empréstimo</span>
                 </div>
                 <div class="c-menu-item">
-                    <div class="c-icon"><i class="fa-solid fa-rotate"></i></div>
+                                <button class="header-btn" onclick="toggleTheme()" title="Alternar Tema" aria-label="Alternar tema">
                     <span class="c-label">Renovação</span>
                 </div>
                 <div class="c-menu-item">

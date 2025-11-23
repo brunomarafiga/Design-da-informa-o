@@ -53,4 +53,24 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.classList.add('dark-mode');
         document.getElementById('themeIcon').classList.replace('fa-moon', 'fa-sun');
     }
+    // Garantir que links marcados abram em nova aba com rel="noopener"
+    document.querySelectorAll('a.open-new-tab').forEach(function (anchor) {
+        // Se o atributo href estiver ausente, não tentamos abrir
+        const href = anchor.getAttribute('href');
+        if (!href) return;
+
+        // Definir target e rel por segurança
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('rel', 'noopener');
+
+        // Garante comportamento consistente em navegadores/ambientes
+        anchor.addEventListener('click', function (e) {
+            // Permitir abrir em nova aba normalmente
+            // mas usar window.open para compatibilidade quando necessário
+            if (anchor.target !== '_blank') {
+                e.preventDefault();
+                window.open(href, '_blank', 'noopener');
+            }
+        });
+    });
 });
